@@ -1,0 +1,49 @@
+.button-groups {
+    position: relative;
+    transition: all 0.3s ease-in-out;
+
+    &.active {
+        span {
+            color: #1d1d1d !important;
+        }
+        img {
+            filter: brightness(0) saturate(100%) invert(0%);
+        }
+        &::after {
+            width: 100%;
+        }
+    }
+
+    span {
+        color: white !important;
+        transition: all 0.3s ease-in-out;
+        font-weight: 500 !important;
+    }
+
+    img {
+        transition: all 0.3s ease-in-out;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 60px;
+        width: 0;
+        background: #d6ed17;
+        transition: all 0.3s ease-in-out;
+    }
+
+    &:hover {
+        span {
+            color: #1d1d1d !important;
+        }
+        img {
+            filter: brightness(0) saturate(100%) invert(0%);
+        }
+        &::after {
+            width: 100%;
+        }
+    }
+}

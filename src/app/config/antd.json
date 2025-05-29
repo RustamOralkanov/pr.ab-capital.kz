@@ -1,0 +1,30 @@
+{
+    "token": {
+        "colorPrimary": "#d6ed17",
+        "colorInfo": "#d6ed17",
+        "colorTextBase": "#1d1d1d",
+        "fontSize": 16,
+        "sizeStep": 0,
+        "sizeUnit": 0,
+        "borderRadius": 0
+    },
+    "components": {
+        "Button": {
+            "contentFontSize": 16,
+            "contentFontSizeSM": 16,
+            "contentLineHeight": 1,
+            "contentLineHeightLG": 1,
+            "contentLineHeightSM": 1,
+            "controlHeight": 60,
+            "controlHeightLG": 60,
+            "controlHeightSM": 60,
+            "paddingInline": 18,
+            "paddingInlineLG": 18,
+            "paddingInlineSM": 18,
+            "primaryColor": "rgb(0,0,0)"
+        },
+        "Typography": {
+            "fontFamilyCode": "'Inter'"
+        }
+    }
+}
