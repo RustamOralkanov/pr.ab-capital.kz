@@ -1,15 +1,7 @@
-import Icon, {
-    CustomIconComponentProps,
-} from "@ant-design/icons/lib/components/Icon";
+import Icon, { type CustomIconComponentProps } from "@ant-design/icons/lib/components/Icon";
 
 const NotificationSvg = () => (
-    <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -19,6 +11,4 @@ const NotificationSvg = () => (
     </svg>
 );
 
-export const NotificationIcon = (props: Partial<CustomIconComponentProps>) => (
-    <Icon component={NotificationSvg} {...props} />
-);
+export const NotificationIcon = (props: Partial<CustomIconComponentProps>) => <Icon component={NotificationSvg} {...props} />;

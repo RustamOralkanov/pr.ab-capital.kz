@@ -1,15 +1,7 @@
-import Icon, {
-    CustomIconComponentProps,
-} from "@ant-design/icons/lib/components/Icon";
+import Icon, { type CustomIconComponentProps } from "@ant-design/icons/lib/components/Icon";
 
 const CompasSvg = () => (
-    <svg
-        width="24"
-        height="25"
-        viewBox="0 0 24 25"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -25,6 +17,4 @@ const CompasSvg = () => (
     </svg>
 );
 
-export const CompasIcon = (props: Partial<CustomIconComponentProps>) => (
-    <Icon component={CompasSvg} {...props} />
-);
+export const CompasIcon = (props: Partial<CustomIconComponentProps>) => <Icon component={CompasSvg} {...props} />;

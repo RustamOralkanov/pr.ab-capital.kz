@@ -1,5 +1,6 @@
 import { forwardRef, useState, type Ref } from "react";
 import type { CarouselRef } from "antd/es/carousel";
+import { useAppSelector } from "@/shared/libs/redux";
 import "./ArrowButtons.scss";
 
 interface ArrowButtonsProps {
@@ -9,6 +10,8 @@ interface ArrowButtonsProps {
 export const ArrowButtons = forwardRef<CarouselRef, ArrowButtonsProps>((props, ref) => {
     const { total } = props;
     const [current, setCurrent] = useState(1);
+
+    const { reverse } = useAppSelector((state) => state?.reverse);
 
     const isRefObject = (ref: Ref<CarouselRef | null>): ref is React.RefObject<CarouselRef> => typeof ref === "object" && ref !== null && "current" in ref;
 
@@ -27,7 +30,7 @@ export const ArrowButtons = forwardRef<CarouselRef, ArrowButtonsProps>((props, r
     };
 
     return (
-        <div className="flex items-center justify-between mt-30">
+        <div className={[reverse ? "flex-row-reverse" : "", "flex items-center justify-between mt-30"].join(" ")}>
             <div className="flex items-center">
                 <button className="w-60 h-60 flex items-center justify-center arrow-button" onClick={handlePrev}>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -46,7 +49,7 @@ export const ArrowButtons = forwardRef<CarouselRef, ArrowButtonsProps>((props, r
                     </svg>
                 </button>
             </div>
-            <div className="flex items-center gap-10">
+            <div className={[reverse ? "flex-row-reverse" : "", "flex items-center gap-10"].join(" ")}>
                 <h2>{current < 9 ? "0" + current : current}</h2>
                 <span className="!text-[20px] !text-white/50">{total < 9 ? "0" + total : total}</span>
             </div>

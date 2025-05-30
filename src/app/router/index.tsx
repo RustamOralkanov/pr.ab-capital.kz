@@ -9,6 +9,8 @@ import { LocationsPage } from "@/pages/locations";
 import { GenplansPage } from "@/pages/genplans";
 import { CarouselsPage } from "@/pages/carousels";
 import { PropertiesByIdPage, PropertiesPage } from "@/pages/properties";
+import { FavoritesPage } from "@/pages/favorites";
+import { ComparePage } from "@/pages/compare";
 
 export const router = createBrowserRouter([
     {
@@ -56,6 +58,14 @@ export const router = createBrowserRouter([
                                         element: <PropertiesByIdPage />,
                                     },
                                 ],
+                            },
+                            {
+                                path: APP_ROUTES.FAVORITES,
+                                element: <FavoritesPage />,
+                            },
+                            {
+                                path: APP_ROUTES.COMPARE,
+                                element: <ComparePage />,
                             },
                             {
                                 path: ":menu_alias",

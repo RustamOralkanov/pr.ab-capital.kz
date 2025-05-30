@@ -1,16 +1,8 @@
-import Icon, {
-    CustomIconComponentProps,
-} from "@ant-design/icons/lib/components/Icon";
-import { SVGProps } from "react";
+import Icon, { type CustomIconComponentProps } from "@ant-design/icons/lib/components/Icon";
+import { type SVGProps } from "react";
 
 const AqtolqynGrandSvg: React.FC<SVGProps<SVGSVGElement>> = () => (
-    <svg
-        width="1em"
-        height="1em"
-        viewBox="0 0 120 33"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg width="1em" height="1em" viewBox="0 0 120 33" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -20,6 +12,4 @@ const AqtolqynGrandSvg: React.FC<SVGProps<SVGSVGElement>> = () => (
     </svg>
 );
 
-export const AqtolqynGrandIcon = (props: Partial<CustomIconComponentProps>) => (
-    <Icon component={AqtolqynGrandSvg} {...props} />
-);
+export const AqtolqynGrandIcon = (props: Partial<CustomIconComponentProps>) => <Icon component={AqtolqynGrandSvg} {...props} />;

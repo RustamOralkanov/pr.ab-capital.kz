@@ -1,15 +1,7 @@
-import Icon, {
-    CustomIconComponentProps,
-} from "@ant-design/icons/lib/components/Icon";
+import Icon, { type CustomIconComponentProps } from "@ant-design/icons/lib/components/Icon";
 
 const UniversitySvg = () => (
-    <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -20,13 +12,7 @@ const UniversitySvg = () => (
 );
 
 const KindergartenSvg = () => (
-    <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -37,13 +23,7 @@ const KindergartenSvg = () => (
 );
 
 const ParkSvg = () => (
-    <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
             d="M12 1.25C12.4142 1.25 12.75 1.58579 12.75 2V3C12.75 3.41421 12.4142 3.75 12 3.75C11.5858 3.75 11.25 3.41421 11.25 3V2C11.25 1.58579 11.5858 1.25 12 1.25Z"
             fill="currentColor"
@@ -86,38 +66,20 @@ const ParkSvg = () => (
 );
 
 const MallSvg = () => (
-    <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
             fillRule="evenodd"
             clipRule="evenodd"
             d="M19.1477 5.25H5.33514L4.15497 3.1346C4.0225 2.89715 3.7719 2.75 3.5 2.75H2C1.58579 2.75 1.25 3.08579 1.25 3.5C1.25 3.91421 1.58579 4.25 2 4.25H3.0596L4.22429 6.33765L6.91037 12.2809L6.91312 12.2869L7.14971 12.8104L4.45287 15.687C4.25895 15.8939 4.19825 16.1924 4.29599 16.4585C4.39372 16.7247 4.63317 16.913 4.91486 16.9452L7.37299 17.2261C10.4477 17.5775 13.5524 17.5775 16.627 17.2261L19.0852 16.9452C19.4967 16.8981 19.7922 16.5264 19.7452 16.1148C19.6981 15.7033 19.3264 15.4078 18.9149 15.4549L16.4567 15.7358C13.4952 16.0742 10.5048 16.0742 7.54331 15.7358L6.56779 15.6243L8.54717 13.513C8.56632 13.4925 8.5841 13.4713 8.60052 13.4494L9.35334 13.5474C10.4083 13.6847 11.4746 13.7116 12.5351 13.6277C15.0086 13.4321 17.301 12.2551 18.9015 10.3591L19.4795 9.67425C19.499 9.65125 19.517 9.62711 19.5335 9.60194L20.6109 7.96009C21.3745 6.79633 20.5397 5.25 19.1477 5.25ZM8.65627 11.944C8.49086 11.9225 8.34823 11.8175 8.27858 11.666L8.27725 11.6631L6.05674 6.75H19.1477C19.3466 6.75 19.4658 6.9709 19.3567 7.13716L18.3042 8.74123L17.7552 9.39152C16.4132 10.9814 14.4909 11.9683 12.4169 12.1324C11.4603 12.208 10.4984 12.1837 9.54688 12.0599L8.65627 11.944Z"
             fill="currentColor"
         />
-        <path
-            d="M6.5 18.5C5.67157 18.5 5 19.1716 5 20C5 20.8284 5.67157 21.5 6.5 21.5C7.32843 21.5 8 20.8284 8 20C8 19.1716 7.32843 18.5 6.5 18.5Z"
-            fill="currentColor"
-        />
-        <path
-            d="M16 20C16 19.1716 16.6716 18.5 17.5 18.5C18.3284 18.5 19 19.1716 19 20C19 20.8284 18.3284 21.5 17.5 21.5C16.6716 21.5 16 20.8284 16 20Z"
-            fill="currentColor"
-        />
+        <path d="M6.5 18.5C5.67157 18.5 5 19.1716 5 20C5 20.8284 5.67157 21.5 6.5 21.5C7.32843 21.5 8 20.8284 8 20C8 19.1716 7.32843 18.5 6.5 18.5Z" fill="currentColor" />
+        <path d="M16 20C16 19.1716 16.6716 18.5 17.5 18.5C18.3284 18.5 19 19.1716 19 20C19 20.8284 18.3284 21.5 17.5 21.5C16.6716 21.5 16 20.8284 16 20Z" fill="currentColor" />
     </svg>
 );
 
 const BankSvg = () => (
-    <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -144,13 +106,7 @@ const BankSvg = () => (
 );
 
 const HospitalSvg = () => (
-    <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
             d="M9.50003 15.2501C9.08582 15.2501 8.75003 15.5859 8.75003 16.0001C8.75003 16.4143 9.08582 16.7501 9.50003 16.7501H11.25V18.5001C11.25 18.9143 11.5858 19.2501 12 19.2501C12.4142 19.2501 12.75 18.9143 12.75 18.5001V16.7501H14.5C14.9142 16.7501 15.25 16.4143 15.25 16.0001C15.25 15.5859 14.9142 15.2501 14.5 15.2501H12.75V13.5001C12.75 13.0859 12.4142 12.7501 12 12.7501C11.5858 12.7501 11.25 13.0859 11.25 13.5001V15.2501H9.50003Z"
             fill="currentColor"
@@ -164,30 +120,11 @@ const HospitalSvg = () => (
     </svg>
 );
 
-const UniversityIcon = (props: Partial<CustomIconComponentProps>) => (
-    <Icon component={UniversitySvg} {...props} />
-);
-const KindergartenIcon = (props: Partial<CustomIconComponentProps>) => (
-    <Icon component={KindergartenSvg} {...props} />
-);
-const ParkIcon = (props: Partial<CustomIconComponentProps>) => (
-    <Icon component={ParkSvg} {...props} />
-);
-const MallIcon = (props: Partial<CustomIconComponentProps>) => (
-    <Icon component={MallSvg} {...props} />
-);
-const BankIcon = (props: Partial<CustomIconComponentProps>) => (
-    <Icon component={BankSvg} {...props} />
-);
-const HospitalIcon = (props: Partial<CustomIconComponentProps>) => (
-    <Icon component={HospitalSvg} {...props} />
-);
+const UniversityIcon = (props: Partial<CustomIconComponentProps>) => <Icon component={UniversitySvg} {...props} />;
+const KindergartenIcon = (props: Partial<CustomIconComponentProps>) => <Icon component={KindergartenSvg} {...props} />;
+const ParkIcon = (props: Partial<CustomIconComponentProps>) => <Icon component={ParkSvg} {...props} />;
+const MallIcon = (props: Partial<CustomIconComponentProps>) => <Icon component={MallSvg} {...props} />;
+const BankIcon = (props: Partial<CustomIconComponentProps>) => <Icon component={BankSvg} {...props} />;
+const HospitalIcon = (props: Partial<CustomIconComponentProps>) => <Icon component={HospitalSvg} {...props} />;
 
-export {
-    UniversityIcon,
-    KindergartenIcon,
-    ParkIcon,
-    MallIcon,
-    BankIcon,
-    HospitalIcon,
-};
+export { UniversityIcon, KindergartenIcon, ParkIcon, MallIcon, BankIcon, HospitalIcon };

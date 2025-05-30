@@ -1,5 +1,6 @@
 import React from "react";
 import { ButtonGroups, type ButtonGroupProps } from "../button-groups/ButtonGroups";
+import { useAppSelector } from "@/shared/libs/redux";
 
 interface InfoWrapperProps {
     title: string | undefined;
@@ -10,13 +11,15 @@ interface InfoWrapperProps {
 }
 
 export const InfoWrapper: React.FC<InfoWrapperProps> = (props) => {
+    const { reverse } = useAppSelector((state) => state?.reverse);
+
     return (
         <div className="flex flex-col gap-30">
-            <div className="flex flex-col gap-4">
-                <h2>{props.title}</h2>
-                {props.subtitle && <h4>{props.subtitle}</h4>}
+            <div className={["flex flex-col gap-4"].join(" ")}>
+                <h2 className={[reverse ? "text-right" : "text-left"].join(" ")}>{props.title}</h2>
+                {props.subtitle && <h4 className={[reverse ? "text-right" : "text-left"].join(" ")}>{props.subtitle}</h4>}
             </div>
-            <p>{props.description}</p>
+            <p className={[reverse ? "text-right" : "text-left"].join(" ")}>{props.description}</p>
             <ButtonGroups
                 buttons={props?.buttons}
                 onClick={(id) => {

@@ -1,16 +1,7 @@
-import Icon, {
-    CustomIconComponentProps,
-} from "@ant-design/icons/lib/components/Icon";
+import Icon, { type CustomIconComponentProps } from "@ant-design/icons/lib/components/Icon";
 
 const DeleteSvg = () => (
-    <svg
-        width="20"
-        height="20"
-        viewBox="0 0 20 20"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{ cursor: "pointer" }}
-    >
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ cursor: "pointer" }}>
         <path
             d="M8.33342 1.875C7.98824 1.875 7.70842 2.15482 7.70842 2.5V3.125H4.16675C3.82157 3.125 3.54175 3.40482 3.54175 3.75C3.54175 4.09518 3.82157 4.375 4.16675 4.375H15.8334C16.1786 4.375 16.4584 4.09518 16.4584 3.75C16.4584 3.40482 16.1786 3.125 15.8334 3.125H12.2917V2.5C12.2917 2.15482 12.0119 1.875 11.6667 1.875H8.33342Z"
             fill="#838383"
@@ -28,6 +19,4 @@ const DeleteSvg = () => (
     </svg>
 );
 
-export const DeleteIcon = (props: Partial<CustomIconComponentProps>) => (
-    <Icon component={DeleteSvg} {...props} />
-);
+export const DeleteIcon = (props: Partial<CustomIconComponentProps>) => <Icon component={DeleteSvg} {...props} />;

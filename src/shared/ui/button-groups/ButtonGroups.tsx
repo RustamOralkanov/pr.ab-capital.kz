@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./ButtonGroups.scss";
+import { useAppSelector } from "@/shared/libs/redux";
 
 export interface ButtonGroupProps {
     id: number;
@@ -10,6 +11,7 @@ export interface ButtonGroupProps {
 
 export const ButtonGroups: React.FC<{ buttons?: ButtonGroupProps[]; onClick: (id: number | null) => void }> = ({ buttons, onClick }) => {
     const [currentIndex, setCurrentIndex] = useState<number | null>(null);
+    const { reverse } = useAppSelector((state) => state?.reverse);
 
     if (buttons)
         return (
@@ -18,7 +20,11 @@ export const ButtonGroups: React.FC<{ buttons?: ButtonGroupProps[]; onClick: (id
                     buttons?.map((button) => (
                         <button
                             key={button.id}
-                            className={["h-60 flex items-center justify-start button-groups", currentIndex === button.id ? "active" : ""].join(" ")}
+                            className={[
+                                "h-60 flex items-center justify-start button-groups",
+                                currentIndex === button.id ? "active" : "",
+                                reverse ? "flex-row-reverse reverse" : "",
+                            ].join(" ")}
                             onClick={() => {
                                 const isSame = currentIndex === button.id;
                                 setCurrentIndex(isSame ? null : button.id);

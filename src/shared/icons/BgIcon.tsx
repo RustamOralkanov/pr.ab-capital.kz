@@ -1,4 +1,4 @@
-import Icon, { CustomIconComponentProps } from "@ant-design/icons/lib/components/Icon";
+import Icon, { type CustomIconComponentProps } from "@ant-design/icons/lib/components/Icon";
 
 const BgSvg = () => (
     <svg width="1688" height="1080" viewBox="0 0 1688 1080" fill="none" xmlns="http://www.w3.org/2000/svg">

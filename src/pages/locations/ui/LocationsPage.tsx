@@ -9,10 +9,12 @@ import { useGetMenuQuery } from "@/shared/api/menu";
 import { useGetProjectsQuery } from "@/shared/api/projects";
 
 import "./LocationsPage.scss";
+import { useAppSelector } from "@/shared/libs/redux";
 
 export const LocationsPage = () => {
     const [selectedIndexes, setSelectedIndexes] = useState<number[]>([]);
 
+    const { reverse } = useAppSelector((state) => state?.reverse);
     const { project, publication_type } = useParams();
     const { data: menus } = useGetMenuQuery({ publication_type, project });
     const { data: locations } = useGetLocationsQuery({ publication_type, project });
@@ -65,7 +67,11 @@ export const LocationsPage = () => {
                         ]?.map((button) => (
                             <button
                                 key={button.id}
-                                className={["h-60 flex items-center justify-start button-groups", selectedIndexes.includes(button.id) ? "active" : ""].join(" ")}
+                                className={[
+                                    "h-60 flex items-center justify-start button-groups",
+                                    selectedIndexes.includes(button.id) ? "active" : "",
+                                    reverse ? "flex-row-reverse reverse" : "",
+                                ].join(" ")}
                                 onClick={() => toggleSelection(button.id)}
                             >
                                 {button?.icon && (

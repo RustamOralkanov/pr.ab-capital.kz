@@ -3,20 +3,31 @@ import { motion } from "motion/react";
 import { useGetPropertiesByIdQuery } from "../api";
 import { Link, useParams } from "react-router";
 import { addToFavorite, AddToFavorite } from "@/features/add-to-favorite";
-import { useAppDispatch } from "@/shared/libs/redux";
+import { useAppDispatch, useAppSelector } from "@/shared/libs/redux";
 import type { Daum } from "../types";
+import { APP_ROUTES } from "@/shared/routes";
+import { HeartOutlined } from "@ant-design/icons";
+import { InfoWrapper } from "@/shared/ui";
 
 export const PropertiesByIdPage = () => {
     const { id, publication_type, project } = useParams();
     const { data } = useGetPropertiesByIdQuery({ id });
+    const { reverse } = useAppSelector((state) => state?.reverse);
     const dispatch = useAppDispatch();
 
     return (
         <InnerLayout
             left={
                 <div className="flex flex-col gap-30">
-                    <h2>Планировка</h2>
-                    <p>Просто выберите свой вариант — остальное мы сделаем за вас</p>
+                    <InfoWrapper title={"Планировки"} description={"Просто выберите свой вариант — остальное мы сделаем за вас"} />
+                    <Link to={`/${publication_type}/${project}/${APP_ROUTES.FAVORITES}`} className="w-full">
+                        <button className={[reverse ? "flex-row-reverse" : "", "h-60 flex items-center justify-start button-groups w-full active"].join(" ")}>
+                            <div className="w-60 h-60 flex justify-center items-center relative z-10">
+                                <HeartOutlined />
+                            </div>
+                            <span className="px-20 relative z-10">Избранные</span>
+                        </button>
+                    </Link>
                     <div className="flex flex-col gap-20">
                         {data?.similarProperties?.map((property) => (
                             <div className="!bg-gray-3 !block" key={property?.id}>

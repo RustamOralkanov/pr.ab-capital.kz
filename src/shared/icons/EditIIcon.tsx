@@ -1,16 +1,7 @@
-import Icon, {
-    CustomIconComponentProps,
-} from "@ant-design/icons/lib/components/Icon";
+import Icon, { type CustomIconComponentProps } from "@ant-design/icons/lib/components/Icon";
 
 const EditSvg = () => (
-    <svg
-        width="20"
-        height="20"
-        viewBox="0 0 20 20"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{ cursor: "pointer" }}
-    >
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ cursor: "pointer" }}>
         <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -24,6 +15,4 @@ const EditSvg = () => (
     </svg>
 );
 
-export const EditIcon = (
-    props: Partial<CustomIconComponentProps> & { onClick?: () => void }
-) => <Icon component={EditSvg} {...props} />;
+export const EditIcon = (props: Partial<CustomIconComponentProps> & { onClick?: () => void }) => <Icon component={EditSvg} {...props} />;

@@ -1,8 +1,10 @@
+import { Reverse } from "@/entities/reverse";
 import { useGetProjectsQuery } from "@/shared/api/projects";
 import { useFullScreen } from "@/shared/hooks/useFullScreen";
 import { ABIcon } from "@/shared/icons/ABIcon";
 import { ChevronIcon } from "@/shared/icons/ChevronIcon";
-import { CompareIcon, FullScreenIcon, GenplanIcon, HomeIcon } from "@/shared/icons/HeaderIcons";
+import { FullScreenIcon, GenplanIcon, HomeIcon } from "@/shared/icons/HeaderIcons";
+import { useAppSelector } from "@/shared/libs/redux";
 import { APP_ROUTES } from "@/shared/routes";
 import { Form, Select } from "antd";
 import { useEffect } from "react";
@@ -10,6 +12,7 @@ import { Link, NavLink, useLocation, useNavigate, useParams } from "react-router
 
 export const Header = () => {
     const [form] = Form.useForm();
+    const { reverse } = useAppSelector((state) => state?.reverse);
     const { handleFullscreen } = useFullScreen();
     const { pathname } = useLocation();
     const { project, publication_type } = useParams();
@@ -37,10 +40,10 @@ export const Header = () => {
 
     return (
         <header className="pb-20 border-b-1 border-b-green">
-            <div className="flex items-center justify-between">
-                <div className="flex items-center">
+            <div className={[reverse ? "flex-row-reverse" : "flex-row", "flex items-center justify-between"].join(" ")}>
+                <div className={[reverse ? "flex-row-reverse" : "flex-row", "flex items-center"].join(" ")}>
                     <Link to={`/${APP_ROUTES.HOME}`}>
-                        <ABIcon height={35} width={114} className="mr-50" />
+                        <ABIcon height={35} width={114} className={[reverse ? "ml-50" : "mr-50"].join(" ")} />
                     </Link>
                     <NavLink
                         to={`/${APP_ROUTES.HOME}`}
@@ -84,9 +87,7 @@ export const Header = () => {
                         </Form.Item>
                     </Form>
                 </div>
-                <button className="w-60 h-60 flex justify-center items-center !text-white !transition-all !duration-300 hover:!bg-green hover:!text-black">
-                    <CompareIcon />
-                </button>
+                <Reverse />
             </div>
         </header>
     );

@@ -1,2 +1,2 @@
 export { AddToFavorite } from "./ui/AddToFavorite";
-export { addToFavorite } from "./model/favorite-slice";
+export { addToFavorite, clearFavorites } from "./model/favorite-slice";

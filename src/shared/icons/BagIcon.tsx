@@ -1,15 +1,7 @@
-import Icon, {
-    CustomIconComponentProps,
-} from "@ant-design/icons/lib/components/Icon";
+import Icon, { type CustomIconComponentProps } from "@ant-design/icons/lib/components/Icon";
 
 const BagSvg = () => (
-    <svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
             fillRule="evenodd"
             clipRule="evenodd"
@@ -19,6 +11,4 @@ const BagSvg = () => (
     </svg>
 );
 
-export const BagIcon = (props: Partial<CustomIconComponentProps>) => (
-    <Icon component={BagSvg} {...props} />
-);
+export const BagIcon = (props: Partial<CustomIconComponentProps>) => <Icon component={BagSvg} {...props} />;

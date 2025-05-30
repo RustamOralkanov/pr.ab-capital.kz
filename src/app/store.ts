@@ -1,3 +1,4 @@
+import reverseSlice from "@/entities/reverse/model/reverse.slice";
 import favoriteSlice from "@/features/add-to-favorite/model/favorite-slice";
 import { loginApi } from "@/pages/entry/api";
 import { propertiesApi } from "@/pages/properties/api";
@@ -15,6 +16,7 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 export const store = configureStore({
     reducer: {
         favorite: favoriteSlice,
+        reverse: reverseSlice,
         [loginApi.reducerPath]: loginApi.reducer,
         [pagesApi.reducerPath]: pagesApi.reducer,
         [projectsApi.reducerPath]: projectsApi.reducer,

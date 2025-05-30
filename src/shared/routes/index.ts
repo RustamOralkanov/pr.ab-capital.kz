@@ -9,4 +9,6 @@ export const APP_ROUTES = {
     VISUALIZATION: "visualizations",
     LOCATIONS: "locations",
     PROPERTIES: "properties",
+    FAVORITES: "favorites",
+    COMPARE: "compare",
 };

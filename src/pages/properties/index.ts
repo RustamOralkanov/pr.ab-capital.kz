@@ -1,2 +1,2 @@
 export { PropertiesPage } from "./ui/PropertiesPage";
-export { PropertiesByIdPage } from "./ui/PropertiesByIDPage";
+export { PropertiesByIdPage } from "./ui/PropertiesByIdPage";

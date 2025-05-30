@@ -5,11 +5,13 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useGetMenuQuery } from "@/shared/api/menu";
 import { useGetGenplansQuery } from "@/shared/api/genplans";
+import { useAppSelector } from "@/shared/libs/redux";
 
 export const GenplansPage = () => {
     const [selectedIndexes, setSelectedIndexes] = useState<number[]>([]);
     const [imageDimensions, setImageDimensions] = useState({ width: 0, height: 0 });
 
+    const { reverse } = useAppSelector((state) => state?.reverse);
     const { project, publication_type } = useParams();
     const { data: menus } = useGetMenuQuery({ publication_type, project });
     const { data: genplans } = useGetGenplansQuery({ publication_type, project });
@@ -78,7 +80,11 @@ export const GenplansPage = () => {
                         ]?.map((button) => (
                             <button
                                 key={button.id}
-                                className={["h-60 flex items-center justify-start button-groups", selectedIndexes.includes(button.id) ? "active" : ""].join(" ")}
+                                className={[
+                                    "h-60 flex items-center justify-start button-groups",
+                                    selectedIndexes.includes(button.id) ? "active" : "",
+                                    reverse ? "flex-row-reverse reverse" : "",
+                                ].join(" ")}
                                 onClick={() => toggleSelection(button.id)}
                             >
                                 {button?.icon && (
