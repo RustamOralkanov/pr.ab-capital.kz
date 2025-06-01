@@ -21,14 +21,16 @@ export const CarouselsPage = () => {
     const content = contents?.filter((content) => content?.pr_project_carousel_id === index);
     const contentType = sections?.find((section) => section?.id === index)?.type;
 
-    useEffect(() => setIndex(null), [menu_alias]);
+    useEffect(() => setIndex(null), [project, publication_type, menu_alias]);
 
     return (
         <InnerLayout
             left={
                 <>
                     <InfoWrapper title={info?.title} description={info?.description} buttons={sections} onClick={(id) => setIndex(id)} />
-                    {(contentType === "carousel" || sections?.length === 0) && <ArrowButtons total={content?.length as number} ref={carouselRef} key={index || menu_alias} />}
+                    {(contentType === "carousel" || sections?.length === 0) && content && content?.length > 0 && (
+                        <ArrowButtons total={content?.length as number} ref={carouselRef} key={index || menu_alias} />
+                    )}
                 </>
             }
             right={
@@ -39,25 +41,41 @@ export const CarouselsPage = () => {
                     transition={{ duration: 1 }}
                     key={index || menu_alias}
                 >
-                    {index === null && sections && sections?.length > 0 && <img src={info?.file} alt="image" />}
+                    {index === null && content && content?.length === 0 && <img src={info?.file} alt="image" />}
                     {contentType === "video" && <VideoWrapper link={content?.[0]?.youtube_link || ""} file={content?.[0]?.file || ""} />}
                     {contentType === "carousel" && (
                         <Carousel dots={false} ref={carouselRef}>
                             {content?.map((item) => (
                                 <div key={item?.id}>
-                                    <div className="w-full h-[calc(100dvh_-_240px)] max-xl:h-[calc(100dvh_-_160px)]">
+                                    <div className="w-full h-[calc(100dvh_-_240px)] max-xl:h-[calc(100dvh_-_160px)] relative">
                                         <img src={item?.image} alt="image" />
+                                        {item?.title && (
+                                            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.6 }} className="blur-wrapper">
+                                                <div className="flex flex-col gap-5 max-w-600">
+                                                    <span className="!text-[20px] !font-semibold !text-gray-70">{item?.title}</span>
+                                                    <span className="!text-sm !font-[300] text-white">{item?.description}</span>
+                                                </div>
+                                            </motion.div>
+                                        )}
                                     </div>
                                 </div>
                             ))}
                         </Carousel>
                     )}
-                    {sections?.length === 0 && (
-                        <Carousel dots={false} ref={carouselRef}>
+                    {sections?.length === 0 && content && content?.length > 0 && (
+                        <Carousel dots={false} ref={carouselRef} className="text">
                             {content?.map((item) => (
                                 <div key={item?.id}>
-                                    <div className="w-full h-[calc(100dvh_-_240px)] max-xl:h-[calc(100dvh_-_160px)]">
+                                    <div className="w-full h-[calc(100dvh_-_240px)] max-xl:h-[calc(100dvh_-_160px)] relative">
                                         <img src={item?.image} alt="image" />
+                                        {item?.title && (
+                                            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.6 }} className="blur-wrapper">
+                                                <div className="flex flex-col gap-5 max-w-600">
+                                                    <span className="!text-[20px] !font-semibold !text-gray-70">{item?.title}</span>
+                                                    <span className="!text-sm !font-[300] text-white">{item?.description}</span>
+                                                </div>
+                                            </motion.div>
+                                        )}
                                     </div>
                                 </div>
                             ))}

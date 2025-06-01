@@ -1,6 +1,8 @@
 .arrow-button {
-    background: #ffffff05;
+    background: #ffffff15;
     transition: all 0.3s ease-in-out;
+    backdrop-filter: blur(20px);
+    backdrop-filter: brightness(40%);
 
     svg {
         path {

@@ -5,7 +5,7 @@ import { InnerLayout } from "@/widgets/layout";
 import { ArrowButtons, InfoWrapper, VideoWrapper } from "@/shared/ui";
 import { Carousel } from "antd";
 import { motion } from "motion/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
 export const ProjectAboutPage = () => {
@@ -18,6 +18,8 @@ export const ProjectAboutPage = () => {
     const { data: advantages } = useGetAdvantagesQuery({ publication_type, project });
 
     const content = sections?.find((section) => section?.id === index);
+
+    useEffect(() => setIndex(null), [project, publication_type]);
 
     return (
         <InnerLayout

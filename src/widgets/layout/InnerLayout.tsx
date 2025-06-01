@@ -9,11 +9,15 @@ export const InnerLayout: React.FC<{ left: ReactNode; right: ReactNode }> = ({ l
     const navigate = useNavigate();
     const { pathname } = useLocation();
     const { reverse } = useAppSelector((state) => state?.reverse);
+    const { publicationType } = useAppSelector((state) => state?.publicationType);
 
     const isProperties = pathname?.includes(APP_ROUTES.PROPERTIES) || pathname?.includes(APP_ROUTES.FAVORITES) || pathname?.includes(APP_ROUTES.COMPARE);
 
     return (
-        <div className={["grid grid-cols-12 gap-40 py-40 border-b-1 border-b-green h-[calc(100dvh_-_160px)] max-xl:h-[calc(100dvh_-_120px)] max-xl:py-20 max-xl:gap-20"].join(" ")}>
+        <div
+            className={["grid grid-cols-12 gap-40 py-40 border-b-1 border-b-green h-[calc(100dvh_-_160px)] max-xl:h-[calc(100dvh_-_120px)] max-xl:py-20 max-xl:gap-20"].join(" ")}
+            key={publicationType}
+        >
             <div className={[reverse ? "order-2" : "order-1", "col-span-3 max-xl:col-span-4 relative "].join(" ")}>
                 <div className="flex flex-col justify-between overflow-auto h-[calc(100dvh_-_320px)] max-xl:h-[calc(100dvh_-_240px)]">
                     {left}

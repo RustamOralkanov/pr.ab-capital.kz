@@ -15,6 +15,8 @@ export interface Projects {
     description: string;
     latitude: string;
     longitude: string;
+    site_area: number;
+    total_area: number;
     images: {
         id: number;
         image: string;

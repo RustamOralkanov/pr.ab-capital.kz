@@ -1,5 +1,6 @@
 export interface ApiParams {
     id?: string;
+    alias?: string;
     lang?: string;
     publication_type?: string;
     project?: string;

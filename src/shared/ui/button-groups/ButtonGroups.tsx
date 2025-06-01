@@ -1,6 +1,6 @@
-import { useState } from "react";
-import "./ButtonGroups.scss";
+import { useEffect, useState } from "react";
 import { useAppSelector } from "@/shared/libs/redux";
+import "./ButtonGroups.scss";
 
 export interface ButtonGroupProps {
     id: number;
@@ -9,9 +9,13 @@ export interface ButtonGroupProps {
     type: string;
 }
 
-export const ButtonGroups: React.FC<{ buttons?: ButtonGroupProps[]; onClick: (id: number | null) => void }> = ({ buttons, onClick }) => {
+export const ButtonGroups: React.FC<{ buttons?: ButtonGroupProps[]; onClick: (id: number | null) => void; activeId?: number }> = ({ buttons, onClick, activeId }) => {
     const [currentIndex, setCurrentIndex] = useState<number | null>(null);
     const { reverse } = useAppSelector((state) => state?.reverse);
+
+    useEffect(() => {
+        if (activeId) setCurrentIndex(activeId);
+    }, [activeId]);
 
     if (buttons)
         return (

@@ -1,17 +1,40 @@
+import { useGetAboutPagesQuery } from "@/shared/api/about-pages";
+import { useGetMsBannersQuery } from "@/shared/api/ms-home";
 import { useGetPagesQuery } from "@/shared/api/pages";
 import { useGetProjectsQuery } from "@/shared/api/projects";
+import { useCarousel } from "@/shared/hooks/useCarousel";
+import { CarouselArrowIcon } from "@/shared/icons/CarouselArrow";
+import { PlayIcon } from "@/shared/icons/PlayIcon";
+import { useAppSelector } from "@/shared/libs/redux";
 import { APP_ROUTES } from "@/shared/routes";
 import { Carousel } from "antd";
 import { Link } from "react-router";
 
 export const HomePage = () => {
+    const { publicationType } = useAppSelector((state) => state?.publicationType);
     const { data } = useGetPagesQuery({ slug: "main" });
     const { data: projects } = useGetProjectsQuery({});
+    const { data: banners } = useGetMsBannersQuery({});
+    const { data: abouts } = useGetAboutPagesQuery({});
+
+    const { carouselRef, prevSlide, nextSlide } = useCarousel();
 
     return (
-        <section className="">
+        <section>
             <div className="grid grid-cols-12 border-b-1 border-b-green mb-40 h-[calc(100dvh_-_500px)] max-xl:h-[calc(100dvh_-_440px)] max-xl:mb-20 overflow-hidden">
-                <div className="col-span-3 max-xl:col-span-4 border-r-1 border-r-green"></div>
+                <div className="col-span-3 max-xl:col-span-4 border-r-1 border-r-green relative">
+                    <img src="/bg.svg" alt="bg" className="absolute top-0 left-0" />
+                    <div className="flex flex-col gap-30 pt-40 max-w-400 relative z-10 pr-40">
+                        <img src={abouts?.[0]?.icon} alt="icon" className="!h-66 !w-fit !object-contain" />
+                        <p className="line-clamp-5">{abouts?.[0]?.subtitle}</p>
+                    </div>
+                    <Link to={`/${APP_ROUTES.ABOUT_COMPANY}/${abouts?.[0]?.alias}`} className="flex items-center gap-8 !text-white/60 !font-[300] absolute right-0 bottom-0 z-10">
+                        Узнать о компании
+                        <div className="w-60 min-w-60 h-60 flex justify-center items-center bg-green">
+                            <PlayIcon className="!text-black" />
+                        </div>
+                    </Link>
+                </div>
                 <div className="col-span-6 max-xl:col-span-8">
                     <div className="w-full h-[calc(100dvh_-_500px)] max-xl:h-[calc(100dvh_-_440px)] relative">
                         <img src={data?.main_image} alt="main-image" className="w-full h-full object-cover" />
@@ -21,7 +44,31 @@ export const HomePage = () => {
                         </div>
                     </div>
                 </div>
-                <div className="col-span-3 border-l-1 border-l-green max-xl:hidden"></div>
+                <div className="col-span-3 border-l-1 border-l-green max-xl:hidden">
+                    <div className="flex flex-col gap-20 pl-40 py-40">
+                        <div className="">
+                            <Carousel dots={false} ref={carouselRef}>
+                                {banners?.map((banner) => (
+                                    <div key={banner?.id}>
+                                        <img src={banner?.file_mobile} alt="banner" className="!object-cover !object-top !h-[calc(100dvh_-_650px)]" />
+                                    </div>
+                                ))}
+                            </Carousel>
+                        </div>
+                        <div className="flex items-center justify-end">
+                            <div className="flex items-center">
+                                <div className="flex items-center">
+                                    <button className="w-50 h-50 flex items-center justify-center arrow-button" onClick={() => prevSlide()}>
+                                        <CarouselArrowIcon className="rotate-180 !text-green" />
+                                    </button>
+                                    <button className="w-50 h-50 flex items-center justify-center arrow-button" onClick={() => nextSlide()}>
+                                        <CarouselArrowIcon className="!text-green" />
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div className="grid grid-cols-12 gap-20">
                 <div className="col-span-3">
@@ -36,7 +83,7 @@ export const HomePage = () => {
                     <Carousel dots={false} variableWidth draggable infinite={false}>
                         {projects?.map((project, i) => (
                             <div key={i}>
-                                <Link to={`/main/${project?.alias}/${APP_ROUTES.ABOUT}`} className="w-450 px-10 flex flex-col gap-12">
+                                <Link to={`/${publicationType}/${project?.alias}/${APP_ROUTES.ABOUT}`} className="w-450 px-10 flex flex-col gap-12">
                                     <div className="h-260 relative">
                                         <img src={project?.images?.[0]?.image} alt={project?.alias} className="w-full h-full object-cover" />
                                         <div className="flex items-center gap-3 absolute top-20 left-20">

@@ -86,7 +86,7 @@ export const LocationsPage = () => {
                 </div>
             }
             right={
-                <motion.div className="relative w-full h-full" initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} key={project}>
+                <motion.div className="relative w-full h-full" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} key={project}>
                     <YMaps>
                         <Map defaultState={{ center: [Number(complex?.latitude), Number(complex?.longitude)], zoom: 14 }} style={{ height: 100 + "%" }}>
                             <Placemark

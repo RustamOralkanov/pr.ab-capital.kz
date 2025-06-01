@@ -6,10 +6,13 @@ import { useParams } from "react-router";
 import { useGetMenuQuery } from "@/shared/api/menu";
 import { useGetGenplansQuery } from "@/shared/api/genplans";
 import { useAppSelector } from "@/shared/libs/redux";
+import { GenplansCarouselModal } from "./GenplansCarouselModal";
+import type { GenplanPins } from "@/shared/api/genplans/types";
 
 export const GenplansPage = () => {
     const [selectedIndexes, setSelectedIndexes] = useState<number[]>([]);
     const [imageDimensions, setImageDimensions] = useState({ width: 0, height: 0 });
+    const [carouselModal, setCarouselModal] = useState<{ open: boolean; content: GenplanPins | null }>({ open: false, content: null });
 
     const { reverse } = useAppSelector((state) => state?.reverse);
     const { project, publication_type } = useParams();
@@ -63,6 +66,8 @@ export const GenplansPage = () => {
 
     const selectedContents = genplans?.filter((section) => selectedIndexes.includes(section.id));
 
+    useEffect(() => setSelectedIndexes([]), [project, publication_type]);
+
     return (
         <InnerLayout
             left={
@@ -99,7 +104,7 @@ export const GenplansPage = () => {
                 </div>
             }
             right={
-                <motion.div className="relative w-full h-full" initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} key={project}>
+                <motion.div className="relative w-full h-full" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} key={project}>
                     <svg
                         width="100%"
                         height={"100%"}
@@ -122,7 +127,7 @@ export const GenplansPage = () => {
                                                     width={60}
                                                     height={60}
                                                     fill="red"
-                                                    onClick={() => (pin?.contents?.length > 0 ? null : null)}
+                                                    onClick={() => (pin?.contents?.length > 0 ? setCarouselModal({ open: true, content: pin }) : null)}
                                                 />
                                             </g>
                                         );
@@ -131,6 +136,7 @@ export const GenplansPage = () => {
                             });
                         })}
                     </svg>
+                    <GenplansCarouselModal open={carouselModal.open} content={carouselModal.content} onCancel={() => setCarouselModal({ open: false, content: null })} />
                 </motion.div>
             }
         />

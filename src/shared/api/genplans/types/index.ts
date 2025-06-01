@@ -4,14 +4,26 @@ export interface Genplans {
     order: number;
     title: string;
     type: string;
+    pins: GenplanPins[];
+}
+
+export interface GenplanPins {
+    icon: string;
+    id: number;
+    order: number;
+    title: string;
     pins: {
-        icon: string;
+        points: string[];
+    }[];
+    contents: {
+        file: string;
         id: number;
         order: number;
-        title: string;
-        pins: {
-            points: string[];
+        type: string;
+        variants: {
+            description: string;
+            file: string;
+            title: string;
         }[];
-        contents: [];
     }[];
 }

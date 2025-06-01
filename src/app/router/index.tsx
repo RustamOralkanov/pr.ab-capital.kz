@@ -11,6 +11,8 @@ import { CarouselsPage } from "@/pages/carousels";
 import { PropertiesByIdPage, PropertiesPage } from "@/pages/properties";
 import { FavoritesPage } from "@/pages/favorites";
 import { ComparePage } from "@/pages/compare";
+import { AboutPage } from "@/pages/about";
+import { ProjectsPage } from "@/pages/projects";
 
 export const router = createBrowserRouter([
     {
@@ -27,6 +29,19 @@ export const router = createBrowserRouter([
             {
                 path: APP_ROUTES.MAP,
                 element: <MapPage />,
+            },
+            {
+                path: APP_ROUTES.ABOUT_COMPANY,
+                children: [
+                    {
+                        path: ":alias",
+                        element: <AboutPage />,
+                    },
+                    {
+                        path: APP_ROUTES.PROJECTS,
+                        element: <ProjectsPage />,
+                    },
+                ],
             },
             {
                 path: ":publication_type",

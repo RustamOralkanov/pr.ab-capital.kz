@@ -1,14 +1,17 @@
-import { forwardRef, useState, type Ref } from "react";
+import { forwardRef, useEffect, useState, type Ref } from "react";
 import type { CarouselRef } from "antd/es/carousel";
 import { useAppSelector } from "@/shared/libs/redux";
 import "./ArrowButtons.scss";
+import { useParams } from "react-router";
 
 interface ArrowButtonsProps {
     total: number;
+    className?: string;
 }
 
 export const ArrowButtons = forwardRef<CarouselRef, ArrowButtonsProps>((props, ref) => {
     const { total } = props;
+    const { project, publication_type, menu_alias } = useParams();
     const [current, setCurrent] = useState(1);
 
     const { reverse } = useAppSelector((state) => state?.reverse);
@@ -29,8 +32,10 @@ export const ArrowButtons = forwardRef<CarouselRef, ArrowButtonsProps>((props, r
         }
     };
 
+    useEffect(() => setCurrent(1), [project, publication_type, menu_alias]);
+
     return (
-        <div className={[reverse ? "flex-row-reverse" : "", "flex items-center justify-between mt-30"].join(" ")}>
+        <div className={[reverse ? "flex-row-reverse" : "", "flex items-center justify-between mt-30", props?.className].join(" ")}>
             <div className="flex items-center">
                 <button className="w-60 h-60 flex items-center justify-center arrow-button" onClick={handlePrev}>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">

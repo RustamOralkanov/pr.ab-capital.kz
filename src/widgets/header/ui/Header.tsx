@@ -16,7 +16,7 @@ export const Header = () => {
     const { handleFullscreen } = useFullScreen();
     const { pathname } = useLocation();
     const { project, publication_type } = useParams();
-    const { data: projects } = useGetProjectsQuery({});
+    const { data: projects } = useGetProjectsQuery({}, { skip: pathname.includes(APP_ROUTES.ABOUT_COMPANY) });
     const navigate = useNavigate();
 
     const isHome = pathname.replace("/", "") === APP_ROUTES.HOME;
@@ -62,7 +62,7 @@ export const Header = () => {
                     >
                         <FullScreenIcon />
                     </button>
-                    {!isHome && (
+                    {!isHome && !pathname.includes(APP_ROUTES.ABOUT_COMPANY) && (
                         <NavLink
                             to={`/${publication_type}/${project}/${APP_ROUTES.PROPERTIES}`}
                             className="w-60 h-60 flex justify-center items-center !text-white !transition-all !duration-300 hover:!bg-green hover:!text-black"
@@ -70,22 +70,24 @@ export const Header = () => {
                             <GenplanIcon />
                         </NavLink>
                     )}
-                    <Form className="max-w-280 w-280" form={form}>
-                        <Form.Item name="project">
-                            <Select
-                                options={projects?.map((project) => ({
-                                    label: project.title,
-                                    value: project.alias,
-                                }))}
-                                placeholder="Проект"
-                                defaultActiveFirstOption
-                                className="w-full"
-                                onChange={(value) => handleChangeProject(value)}
-                                suffixIcon={<ChevronIcon className="!text-gray" />}
-                                classNames={{ root: "custom-select", popup: { root: "custom-list" } }}
-                            />
-                        </Form.Item>
-                    </Form>
+                    {!isHome && !pathname.includes(APP_ROUTES.ABOUT_COMPANY) && (
+                        <Form className="max-w-280 w-280" form={form}>
+                            <Form.Item name="project">
+                                <Select
+                                    options={projects?.map((project) => ({
+                                        label: project.title,
+                                        value: project.alias,
+                                    }))}
+                                    placeholder="Проект"
+                                    defaultActiveFirstOption
+                                    className="w-full"
+                                    onChange={(value) => handleChangeProject(value)}
+                                    suffixIcon={<ChevronIcon className="!text-gray" />}
+                                    classNames={{ root: "custom-select", popup: { root: "custom-list" } }}
+                                />
+                            </Form.Item>
+                        </Form>
+                    )}
                 </div>
                 <Reverse />
             </div>

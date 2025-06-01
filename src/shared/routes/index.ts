@@ -1,6 +1,7 @@
 export const APP_ROUTES = {
     HOME: "home",
     MAP: "map",
+    ABOUT_COMPANY: "about-company",
     ABOUT: "about",
     PROGRESS: "progress",
     FEATURES: "features",
@@ -11,4 +12,5 @@ export const APP_ROUTES = {
     PROPERTIES: "properties",
     FAVORITES: "favorites",
     COMPARE: "compare",
+    PROJECTS: "projects",
 };
