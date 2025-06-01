@@ -1,4 +1,4 @@
-import { YMaps, Map, Placemark } from "@pbe/react-yandex-maps";
+import { YMaps, Map, Placemark, Circle } from "@pbe/react-yandex-maps";
 import { InnerLayout } from "@/widgets/layout";
 import { InfoWrapper } from "@/shared/ui";
 import { motion } from "motion/react";
@@ -7,9 +7,10 @@ import { useParams } from "react-router";
 import { useGetLocationsQuery } from "@/shared/api/locations";
 import { useGetMenuQuery } from "@/shared/api/menu";
 import { useGetProjectsQuery } from "@/shared/api/projects";
+import { useAppSelector } from "@/shared/libs/redux";
 
 import "./LocationsPage.scss";
-import { useAppSelector } from "@/shared/libs/redux";
+import React from "react";
 
 export const LocationsPage = () => {
     const [selectedIndexes, setSelectedIndexes] = useState<number[]>([]);
@@ -49,6 +50,8 @@ export const LocationsPage = () => {
     };
 
     const selectedContents = locations?.filter((section) => selectedIndexes.includes(section.id));
+    const circles = locations?.filter((location) => location?.type === "circle");
+    console.log(circles);
 
     return (
         <InnerLayout
@@ -57,13 +60,17 @@ export const LocationsPage = () => {
                     <InfoWrapper title={info?.title} description={info?.description} />
                     <div className="flex flex-col">
                         {[
-                            {
-                                id: -1,
-                                title: info?.btn_text,
-                                icon: "",
-                                type: "",
-                            },
-                            ...(locations?.map((location) => ({ ...location })) || []),
+                            ...(locations && locations?.filter((location) => location.type !== "circle").length > 0
+                                ? [
+                                      {
+                                          id: -1,
+                                          title: info?.btn_text,
+                                          icon: "",
+                                          type: "",
+                                      },
+                                  ]
+                                : []),
+                            ...(locations?.filter((location) => location.type !== "circle")?.map((location) => ({ ...location })) || []),
                         ]?.map((button) => (
                             <button
                                 key={button.id}
@@ -116,6 +123,41 @@ export const LocationsPage = () => {
                                     />
                                 ))
                             )}
+
+                            {circles?.map((circle) => {
+                                return circle?.contents?.map((content, i) => {
+                                    const radius = (i + 1) * 1000; // в метрах
+                                    const lat = Number(complex?.latitude);
+                                    const lng = Number(complex?.longitude);
+                                    const lngOffset = radius / (111320 * Math.cos((lat * Math.PI) / 180)); // перевод в градусы
+
+                                    return (
+                                        <React.Fragment key={i}>
+                                            <Circle
+                                                geometry={[[Number(complex?.latitude), Number(complex?.longitude)], (i + 1) * 1000]}
+                                                options={{
+                                                    fillColor: "#ffffff00",
+                                                    strokeColor: "#2691F4",
+                                                    strokeOpacity: 1,
+                                                    strokeWidth: 2,
+                                                    strokeStyle: "dash",
+                                                }}
+                                            />
+                                            <Placemark
+                                                options={{ zIndex: 100 }}
+                                                geometry={[lat, lng - lngOffset]} // Смещение влево
+                                                properties={{
+                                                    iconContent: `
+                                                                <div class="commerce-balloon ">
+                                                                    <div>${content?.title}</div>
+                                                                    <div>${content?.subtitle}</div>
+                                                                </div>`,
+                                                }}
+                                            />
+                                        </React.Fragment>
+                                    );
+                                });
+                            })}
                         </Map>
                     </YMaps>
                 </motion.div>
