@@ -115,9 +115,6 @@ export const LocationsPage = () => {
                                                                         <img src="${content?.icon}" alt="map-image"/>
                                                                     </div>
                                                                 </div>
-                                                                <div class="map-title">
-                                                                    <h3>${item?.title}</h3>
-                                                                </div>
                                                             </div>`,
                                         }}
                                     />
@@ -165,3 +162,13 @@ export const LocationsPage = () => {
         />
     );
 };
+
+// `<div class="map-container">
+// <div class="map-wrapper">
+// <div class="map-wrapper-image">
+// <img src="${content?.icon}" alt="map-image"/>
+// </div>
+// <div class="map-title">
+// <h3>${item?.title}</h3>
+// </div>
+// </div>`
