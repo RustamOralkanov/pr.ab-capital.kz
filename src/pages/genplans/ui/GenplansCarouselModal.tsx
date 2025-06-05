@@ -34,10 +34,7 @@ export const GenplansCarouselModal: React.FC<GenplansCarouselModalProps> = (prop
                     </div>
                     <div className="flex flex-col gap-12">
                         <h3 className="!text-black !text-[32px]">{content?.contents?.[0]?.variants?.[index]?.title}</h3>
-                        <p className="!text-black !leading-[1.2]">
-                            Для маленьких жителей во дворе предусмотрена отдельная игровая зона с безопасным покрытием и технологичным игровым оборудованием, чтобы каждый ребёнок
-                            нашёл себе увлечение по душе.
-                        </p>
+                        <p className="!text-black !leading-[1.2]">{content?.contents?.[0]?.variants?.[index]?.description}</p>
                     </div>
                 </div>
             </div>
