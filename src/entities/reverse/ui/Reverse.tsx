@@ -19,7 +19,10 @@ export const Reverse = () => {
     }, []);
 
     return (
-        <button className="w-60 h-60 flex justify-center items-center !text-white !transition-all !duration-300 hover:!bg-green hover:!text-black" onClick={setReverse}>
+        <button
+            className="w-60 h-60 flex justify-center items-center !text-white !transition-all !duration-300 hover:!bg-green hover:!text-black max-lg:hidden"
+            onClick={setReverse}
+        >
             <CompareIcon />
         </button>
     );

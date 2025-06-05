@@ -7,7 +7,7 @@ import { useGetProjectsQuery } from "@/shared/api/projects";
 export const MapPage = () => {
     const { data } = useGetProjectsQuery({});
     return (
-        <div className="h-[calc(100dvh_-_160px)] py-40 border-b-1 border-b-green max-xl:h-[calc(100dvh_-_120px)] max-xl:py-20 relative">
+        <div className="h-[calc(100dvh_-_160px)] py-40 border-b-1 border-b-green max-xl:h-[calc(100dvh_-_120px)] max-xl:py-20 relative max-lg:h-[calc(100dvh_-_100px)]">
             <YMaps>
                 <Map defaultState={{ center: [43.233066, 76.936992], zoom: 13 }} style={{ height: 100 + "%" }}>
                     {data?.map((coord) => (

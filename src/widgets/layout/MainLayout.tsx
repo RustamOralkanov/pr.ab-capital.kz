@@ -9,7 +9,7 @@ export const MainLayout = () => {
 
     return (
         <section
-            className="h-dvh w-full p-40 max-xl:p-20"
+            className="h-dvh w-full p-40 max-xl:p-20 max-lg:h-auto"
             style={{
                 background:
                     publicationType === "commerce" && pathname !== "/home"

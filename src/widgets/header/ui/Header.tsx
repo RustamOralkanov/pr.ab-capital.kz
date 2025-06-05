@@ -50,14 +50,14 @@ export const Header = () => {
                         className={({ isActive }) =>
                             [
                                 isActive ? "!text-black !bg-green" : "!text-white",
-                                "w-60 h-60 flex justify-center items-center !transition-all !duration-300 hover:!bg-green hover:!text-black",
+                                "w-60 h-60 flex justify-center items-center !transition-all !duration-300 hover:!bg-green hover:!text-black max-lg:hidden",
                             ].join(" ")
                         }
                     >
                         <HomeIcon />
                     </NavLink>
                     <button
-                        className="w-60 h-60 flex justify-center items-center !text-white !transition-all !duration-300 hover:!bg-green hover:!text-black"
+                        className="w-60 h-60 flex justify-center items-center !text-white !transition-all !duration-300 hover:!bg-green hover:!text-black max-lg:hidden"
                         onClick={handleFullscreen}
                     >
                         <FullScreenIcon />
@@ -65,13 +65,13 @@ export const Header = () => {
                     {!isHome && !pathname.includes(APP_ROUTES.ABOUT_COMPANY) && (
                         <NavLink
                             to={`/${publication_type}/${project}/${APP_ROUTES.PROPERTIES}`}
-                            className="w-60 h-60 flex justify-center items-center !text-white !transition-all !duration-300 hover:!bg-green hover:!text-black"
+                            className="w-60 h-60 flex justify-center items-center !text-white !transition-all !duration-300 hover:!bg-green hover:!text-black max-lg:hidden"
                         >
                             <GenplanIcon />
                         </NavLink>
                     )}
                     {!isHome && !pathname.includes(APP_ROUTES.ABOUT_COMPANY) && (
-                        <Form className="max-w-280 w-280" form={form}>
+                        <Form className="max-w-280 w-280 max-lg:hidden" form={form}>
                             <Form.Item name="project">
                                 <Select
                                     options={projects?.map((project) => ({
